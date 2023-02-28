@@ -1,4 +1,4 @@
-const { lancerDes, basculerBlocage, calculerScore } = require('./yams');
+const lancerDes = require('./yams');
 
 //TESTS
 
@@ -7,8 +7,8 @@ describe('Yams', () => {
 
         //doit générer 5 valeurs de dé
         test('doit générer 5 valeurs de dés', () => {
-            lancerDes();
-            expect(valeursDes.length).toEqual(5);
+            var resultat = lancerDes();
+            expect(resultat.length).toEqual(5);
         });
 
         //doit générer des chiffres de 1 à 6
@@ -28,8 +28,6 @@ describe('Yams', () => {
             expect(compteurLancers).toEqual(3);
         });
     });
-
-
 
     //test de scores (ex: 50 points)
     describe('score', () => {
