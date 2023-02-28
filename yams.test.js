@@ -13,10 +13,10 @@ describe('Yams', () => {
 
         //doit générer des chiffres de 1 à 6
         test('chaque valeur doit être entre 1 et 6', () => {
-            lancerDes();
+            var resultat = lancerDes();
             for (var i = 0; i < 5; i++) {
-                expect(valeursDes[i]).toBeGreaterThanOrEqual(1);
-                expect(valeursDes[i]).toBeLessThanOrEqual(6);
+                expect(resultat[i]).toBeGreaterThanOrEqual(1);
+                expect(resultat[i]).toBeLessThanOrEqual(6);
             }
         });
 
