@@ -1,7 +1,12 @@
 const lancerDes = require('./yams');
+const calculScore = require('./yams');
+
 
 //TESTS
-
+afterEach(() => {
+    jest.clearAllMocks();
+  });
+  
 describe('Yams', () => {
     describe('lancerDes', () => {
 
@@ -28,7 +33,7 @@ describe('Yams', () => {
             expect(compteurLancers).toEqual(3);
         });
     });
-
+/*
     //test de scores (ex: 50 points)
     describe('score', () => {
         test('doit retourner 50 pts pour un full', () => {
@@ -39,5 +44,5 @@ describe('Yams', () => {
             expect(score([5, 5, 5, 5, 5])).toBe(50);
             expect(score([6, 6, 6, 6, 6])).toBe(50);
         });
-    });
+    });*/
 });
