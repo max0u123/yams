@@ -20,7 +20,11 @@ var grilleScore = {
 
 //Lancer les 5 dés
 function lancerDes() {
-    return valeursDes = [Math.ceil(Math.random() * 6), Math.ceil(Math.random() * 6), Math.ceil(Math.random() * 6), Math.ceil(Math.random() * 6), Math.ceil(Math.random() * 6)];
+    tabDes = [Math.ceil(Math.random() * 6), Math.ceil(Math.random() * 6), Math.ceil(Math.random() * 6), Math.ceil(Math.random() * 6), Math.ceil(Math.random() * 6)];
+    // Trier le tableau en ordre croissant
+    valeurDes = tabDes.sort(function (a, b) {
+        return a - b;
+    });
 }
 for (var i = 0; i < 5; i++) {
     resultat = lancerDes()
@@ -35,20 +39,17 @@ module.exports = lancerDes;
 var brelan, carre, yams, petiteSuite, grandeSuite = false;
 
 
-//Si c'est une Grande suite (5)
-if (valeursDes[i] + 1 !== valeursDes[i + 1]) {
-    grandeSuite = true;
-}
 
-//Si c'est une Petite suite (4)  
-// Trier le tableau en ordre croissant
-valeursDes.sort(function (a, b) {
-    return a - b;
-});
 
+ 
 // Vérifier si le tableau contient une petite suite
 for (let i = 0; i < 4; i++) {
-    if (valeursDes[i + 1] === valeursDes[i] + 1 && valeursDes[i + 2] === valeursDes[i] + 2 && valeursDes[i + 3] === valeursDes[i] + 3) {
+    //Si c'est une Grande suite (5)
+    if (valeursDes[i] + 1 !== valeursDes[i + 1]) {
+        grandeSuite = true;
+    }
+    //Si c'est une Petite suite (4) 
+    else if (valeursDes[i + 1] === valeursDes[i] + 1 && valeursDes[i + 2] === valeursDes[i] + 2 && valeursDes[i + 3] === valeursDes[i] + 3) {
         petiteSuite = true;
     }
 }
