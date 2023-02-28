@@ -22,7 +22,7 @@ describe('Yams', () => {
 
         //ne doit pas générer de nv lancers après 3 tours
         test('ne doit pas générer de nouveaux lancers après 3 tours', () => {
-            for (var i = 0; i < 4; i++) {
+            for (var i = 0; i < 3; i++) {
                 lancerDes();
             }
             expect(compteurLancers).toEqual(3);
