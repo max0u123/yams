@@ -1,6 +1,4 @@
-const lancerDes = require('./yams');
-const calculScore = require('./yams');
-
+const { lancerDes, trierDes, compterDes, estValide, calculerScore } = require('./yams');
 
 //TESTS
 afterEach(() => {
