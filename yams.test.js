@@ -65,4 +65,21 @@ describe('score', () => {
             expect(score([6, 6, 6, 6, 6])).toBe(50);
         });
     });
+    //test de scores (ex: XX points)
+describe('score', () => {
+  test('doit retourner la somme du carré des dés en points', () => {
+  //1
+      expect(score([1,1,1,1 , (2 | 3 | 4 | 5 | 6)])).toBe(4);
+  // 2
+      expect(score([1 | 2,2,2,2 | ( 3 | 4 | 5 | 6)])).toBe(8);
+  // 3
+  expect(score([(1 |2 ) |  3,3,3,3 | ( 4 | 5 | 6)])).toBe(12);
+  // 4
+  expect(score([(1 |2|3) | 4,4,4,4 | ( 5 | 6)])).toBe(16);
+  // 5
+  expect(score([(1 |2|3 | 4) | 5,5,5,5 | ( 6)])).toBe(20);
+  // 6
+  expect(score([(1 |2|3 | 4 | 5 ) ,6,6,6,6 ])).toBe(24);
+  });
+}); 
 });
