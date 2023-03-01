@@ -3,23 +3,7 @@ const { isFunction } = require("@babel/types");
 //variables
 var score = 0;
 var lances = 0;
-/*
-var grilleScore = {
-    "Un": 0,
-    "Deux": 0,
-    "Trois": 0,
-    "Quatre": 0,
-    "Cinq": 0,
-    "Six": 0,
-    "Brelan": 0,
-    "Carré": 0,
-    "Full": 0,
-    "Petite Suite": 0,
-    "Grande Suite": 0,
-    "Yahtzee": 0,
-    "Chance": 0
-};
-*/
+
 
 //FONCTION LANCER LES DES
 function lancerDes() {
@@ -36,56 +20,66 @@ module.exports = lancerDes;
 console.log(lancerDes());
 
 //Erreur en cas de 3 lancés
-roll() {
+roll(){
     if (lances > 3) {
       throw new Error('Cannot roll more than three times');
     }
+}
 
 
-
-//FONCTION CALCUL DU SCORE
-// Vérifier si le tableau contient une petite suite
-    for (var i = 0; i < 5; i++) {
-        //Si c'est une Grande suite (5)
-        if (valeursDes[i] + 1 !== valeursDes[i + 1]) {
-            grandeSuite = true;
-            score = 40;
-
-        }
-        //Si c'est une Petite suite (4) 
-        else if (valeursDes[i + 1] === valeursDes[i] + 1 && valeursDes[i + 2] === valeursDes[i] + 2 && valeursDes[i + 3] === valeursDes[i] + 3) {
-            petiteSuite = true;
-            score = 30;
-        }
+// Fonction pour compter le nombre de dés ayant une certaine valeur
+function compterDes(des, valeur) {
+    return des.filter(d => d === valeur).length;
+  }
+  
+  // Fonction pour vérifier si une combinaison est valide
+  function estValide(des, combinaison) {
+    switch (combinaison) {
+      case 'brelan':
+        return des.some(d => compterDes(des, d) >= 3);
+      case 'carre':
+        return des.some(d => compterDes(des, d) >= 4);
+      case 'full':
+        return des.some(d => compterDes(des, d) === 3) &&
+               des.some(d => compterDes(des, d) === 2);
+      case 'petiteSuite':
+        return trierDes(des).join('') === '12345' ||
+               trierDes(des).join('') === '23456';
+      case 'grandeSuite':
+        return trierDes(des).join('') === '12345' ||
+               trierDes(des).join('') === '23456';
+      case 'yahtzee':
+        return des.every(d => d === des[0]);
+      default:
+        return true;
     }
-
-    for (var i = 0; i < 5; i++) {
-        var count = 0;
-        for (var j = 0; j < 5; j++) {
-            if (valeursDes[j] === i) {
-                count++;
-                var valeurRepetee = i;
-            }
-        }
-        //s'il y a 3 dés identiques (Brelan)
-        if (count = 3) {
-            brelan = true;
-            score = valeurRepetee * 3
-        }
-        //s'il y a 4 dés identiques (Carré)
-        else if (count = 4) {
-            carre = true;
-            score = valeurRepetee * 4
-        }
-        //s'il y a 5 dés identiques (YAMS)
-        else if (count = 5) {
-            yams = true;
-            score = 50;
-        }
+  }
+  
+  // Fonction pour calculer le score pour une combinaison
+  function calculerScore(des, combinaison) {
+    switch (combinaison) {
+      case 'brelan':
+        return des.reduce((acc, d) => acc + d, 0);
+      case 'carre':
+        return des.reduce((acc, d) => acc + d, 0);
+      case 'full':
+        return 25;
+      case 'petiteSuite':
+        return 30;
+      case 'grandeSuite':
+        return 40;
+      case 'yahtzee':
+        return 50;
+      default:
+        return des.reduce((acc, d) => acc + d, 0);
     }
-    //Sinon, on additionne tous les chiffres  
-    for (var i = 0; i < 5; i++) {
-        score += valeursDes[i];
-    }
-
-    console.log(score);
+  }
+  
+  module.exports = {
+    lancerDes,
+    trierDes,
+    compterDes,
+    estValide,
+    calculerScore,
+  };
+  
