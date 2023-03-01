@@ -2,6 +2,7 @@ const { isFunction } = require("@babel/types");
 
 //variables
 var score = 0;
+var lances = 0;
 /*
 var grilleScore = {
     "Un": 0,
@@ -24,21 +25,26 @@ var grilleScore = {
 function lancerDes() {
     score = 0;
     var tabDes = [Math.ceil(Math.random() * 6), Math.ceil(Math.random() * 6), Math.ceil(Math.random() * 6), Math.ceil(Math.random() * 6), Math.ceil(Math.random() * 6)];
+    lances ++;
     // Trier le tableau en ordre croissant
     return valeursDes = tabDes.sort(function (a, b) {
         return a - b;
     })
-}
-;
+    
+};
 module.exports = lancerDes;
 console.log(lancerDes());
 
-//tenir ou relâcher un dé
+//Erreur en cas de 3 lancés
+roll() {
+    if (lances > 3) {
+      throw new Error('Cannot roll more than three times');
+    }
+
 
 
 //FONCTION CALCUL DU SCORE
 // Vérifier si le tableau contient une petite suite
-function calculScore(valeursDes) {
     for (var i = 0; i < 5; i++) {
         //Si c'est une Grande suite (5)
         if (valeursDes[i] + 1 !== valeursDes[i + 1]) {
@@ -83,7 +89,3 @@ function calculScore(valeursDes) {
     }
 
     console.log(score);
-}
-module.exports = calculScore;
-
-
