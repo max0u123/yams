@@ -33,7 +33,27 @@ describe('Yams', () => {
             expect(compteurLancers).toEqual(3);
         });
     });
-/*
+
+//test de scores (ex: 30 points)
+describe('score', () => {
+  test('doit retourner 30 pts pour un small straight', () => {
+    // 1 , 2 , 3, 4
+    expect(score([1, 1, 2 , 3, 4] | [1 ,2, 2, 3, 4] | [1, 2 , 3, 3, 4] | [1, 2, 3, 4, 4] | [ 1, 2,3, 4, 5] | [1 , 2, 3, 4, 6])).toBe(30);
+    // 2, 3, 4, 5
+    expect(score([1, 2, 3, 4, 5,] | [2, 2, 3, 4, 5,] | [2, 3, 3, 4, 5,] | [2, 3, 4, 4, 5] | [ 2, 3, 4, 5,5] | [2, 3, 4, 5, 6])).toBe(30);
+    // 3, 4, 5, 6
+      expect(score([1, 3, 4, 5, 6] | [2, 3, 4, 5, 6] | [3, 3, 4, 5, 6] | [3, 4, 4, 5, 6] | [ 3, 4, 5,5, 6] | [ 3, 4, 5, 6, 6])).toBe(30);
+  });
+});
+//test de scores (ex: 40 points)
+describe('score', () => {
+  test('doit retourner 40 pts pour un small straight', () => {
+     //1, 2, 3, 4, 5
+      expect(score([1, 2, 3, 4, 5])).toBe(40);
+    // 2, 3, 4, 5,6
+      expect(score([2, 3, 4, 5, 6])).toBe(40);
+  });
+}); 
     //test de scores (ex: 50 points)
     describe('score', () => {
         test('doit retourner 50 pts pour un full', () => {
@@ -44,5 +64,5 @@ describe('Yams', () => {
             expect(score([5, 5, 5, 5, 5])).toBe(50);
             expect(score([6, 6, 6, 6, 6])).toBe(50);
         });
-    });*/
+    });
 });
