@@ -34,52 +34,28 @@ describe('Yams', () => {
         });
     });
 
-//test de scores (ex: 30 points)
-describe('score', () => {
-  test('doit retourner 30 pts pour un small straight', () => {
-    // 1 , 2 , 3, 4
-    expect(score([1, 1, 2 , 3, 4] | [1 ,2, 2, 3, 4] | [1, 2 , 3, 3, 4] | [1, 2, 3, 4, 4] | [ 1, 2,3, 4, 5] | [1 , 2, 3, 4, 6])).toBe(30);
-    // 2, 3, 4, 5
-    expect(score([1, 2, 3, 4, 5,] | [2, 2, 3, 4, 5,] | [2, 3, 3, 4, 5,] | [2, 3, 4, 4, 5] | [ 2, 3, 4, 5,5] | [2, 3, 4, 5, 6])).toBe(30);
-    // 3, 4, 5, 6
-      expect(score([1, 3, 4, 5, 6] | [2, 3, 4, 5, 6] | [3, 3, 4, 5, 6] | [3, 4, 4, 5, 6] | [ 3, 4, 5,5, 6] | [ 3, 4, 5, 6, 6])).toBe(30);
+describe('calculerScore', () => {
+  test('renvoie le score pour une combinaison', () => {
+    const des = [1, 2, 3, 4, 4];
+    expect(calculerScore(des, 'PETITESUITE')).toBe(30);
   });
 });
-//test de scores (ex: 40 points)
-describe('score', () => {
-  test('doit retourner 40 pts pour un small straight', () => {
-     //1, 2, 3, 4, 5
-      expect(score([1, 2, 3, 4, 5])).toBe(40);
-    // 2, 3, 4, 5,6
-      expect(score([2, 3, 4, 5, 6])).toBe(40);
+  describe('calculerScore', () => {
+  test('renvoie le score pour une combinaison', () => {
+    const des = [1,1,1,1,1];
+    expect(calculerScore(des, 'YATHZEE')).toBe(50);
   });
-}); 
-    //test de scores (ex: 50 points)
-    describe('score', () => {
-        test('doit retourner 50 pts pour un full', () => {
-            expect(score([1, 1, 1, 1, 1])).toBe(50);
-            expect(score([2, 2, 2, 2, 2])).toBe(50);
-            expect(score([3, 3, 3, 3, 3])).toBe(50);
-            expect(score([4, 4, 4, 4, 4])).toBe(50);
-            expect(score([5, 5, 5, 5, 5])).toBe(50);
-            expect(score([6, 6, 6, 6, 6])).toBe(50);
-        });
+});
+describe('calculerScore', () => {
+  test('renvoie le score pour une combinaison', () => {
+    const des = [1, 2, 3, 4, 5];
+    expect(calculerScore(des, 'GRANDESUITE')).toBe(40);
+  });
+});
+    describe('calculerScore', () => {
+      test('renvoie le score pour une combinaison', () => {
+        const des = [5, 3, 6, 1, 2];
+        expect(calculerScore(des, 'CHANCE')).toBe(17);
+      });
     });
-    //test de scores (ex: XX points)
-describe('score', () => {
-  test('doit retourner la somme du carré des dés en points', () => {
-  //1
-      expect(score([1,1,1,1 , (2 | 3 | 4 | 5 | 6)])).toBe(4);
-  // 2
-      expect(score([1 | 2,2,2,2 | ( 3 | 4 | 5 | 6)])).toBe(8);
-  // 3
-  expect(score([(1 |2 ) |  3,3,3,3 | ( 4 | 5 | 6)])).toBe(12);
-  // 4
-  expect(score([(1 |2|3) | 4,4,4,4 | ( 5 | 6)])).toBe(16);
-  // 5
-  expect(score([(1 |2|3 | 4) | 5,5,5,5 | ( 6)])).toBe(20);
-  // 6
-  expect(score([(1 |2|3 | 4 | 5 ) ,6,6,6,6 ])).toBe(24);
-  });
-}); 
 });
